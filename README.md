@@ -1,3 +1,16 @@
+                 Projet IKouq
+Ce projet consiste à réaliser un site web dynamique dit “portail web” réunissant des
+recettes pour les principaux de régimes alimentaires (Végétarien, hyperprotéiné, vegan, et caetera).
+Il s’agit de faire découvrir le patrimoine gastronomique en respectant des caractéristiques alimentaires strictes.
+
+Les objectifs principaux sont donc les suivants :
+Partage de recettes
+Casser l’image négative sur les différents régimes
+Sensibiliser sur les valeurs énergétiques des produits utilisés et des recettes cuisinées
+
+
+
+
 Symfony Standard Edition
 ========================
 
