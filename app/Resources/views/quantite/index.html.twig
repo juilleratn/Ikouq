@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block title %}Quantité{% endblock %}
+{% block body %}
+    <h1>Quantites list</h1>
+    <ul>
+        <li>
+            <a href="{{ path('quantite_new') }}">Create a new quantite</a>
+        </li>
+    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Quantite</th>
+{#                <th>Recette</th>#}
+{#                <th>Ingrédient</th>#}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for quantite in quantites %}
+            <tr>
+                <td><a href="{{ path('quantite_show', { 'id': quantite.id }) }}">{{ quantite.id }}</a></td>
+                <td>{{ quantite.quantite }}</td>
+{#                <td>{{ quantite.fk_recette }}</td>#}{#ajouter recettes et ingredients#}
+{#                <td>{{ quantite.fk_ingredient }}</td>#}
+
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('quantite_show', { 'id': quantite.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('quantite_edit', { 'id': quantite.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('quantite_new') }}">Create a new quantite</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block title %}Recette{% endblock %}
+{% block body %}
+    <h1>Recettes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Part</th>
+                <th>Duree</th>
+                <th>Urlphoto</th>
+                <th>Thermostat</th>
+                <th>Tempscuisson</th>
+                <th>Regime</th>
+                <th>Plat</th>
+                <th>Instruction</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for recette in recettes %}
+            <tr>
+                <td><a href="{{ path('recette_show', { 'id': recette.id }) }}">{{ recette.id }}</a></td>
+                <td>{{ recette.nom }}</td>
+                <td>{{ recette.part }}</td>
+                <td>{{ recette.duree }}</td>
+                <td>{{ recette.urlPhoto }}</td>
+                <td>{{ recette.thermostat }}</td>
+                <td>{{ recette.tempsCuisson }}</td>
+                <td>{{ recette.regime }}</td>
+                <td>{{ recette.plat }}</td>
+                <td>{{ recette.instruction }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('recette_show', { 'id': recette.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('recette_edit', { 'id': recette.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('recette_new') }}">Create a new recette</a>
+        </li>
+    </ul>
+{% endblock %}

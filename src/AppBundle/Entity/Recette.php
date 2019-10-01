@@ -36,6 +36,13 @@ class Recette
     private $part;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="duree", type="integer")
+     */
+    private $duree;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="url_photo", type="string", length=255)
@@ -134,6 +141,30 @@ class Recette
     public function getPart()
     {
         return $this->part;
+    }
+
+    /**
+     * Set duree
+     *
+     * @param integer $duree
+     *
+     * @return Recette
+     */
+    public function setDuree($duree)
+    {
+        $this->duree = $duree;
+
+        return $this;
+    }
+
+    /**
+     * Get duree
+     *
+     * @return int
+     */
+    public function getDuree()
+    {
+        return $this->duree;
     }
 
     /**
@@ -278,6 +309,21 @@ class Recette
     public function getInstruction()
     {
         return $this->instruction;
+    }
+
+    public function __toString()
+    {
+        $format = "%s,%s,%s,%s,%s,%s,%s,%s,%s";
+        return sprintf($format,
+            $this->nom,
+            $this->part,
+            $this->duree,
+            $this->urlPhoto,
+            $this->thermostat,
+            $this->tempsCuisson,
+            $this->regime,
+            $this->plat,
+            $this->instruction);
     }
 }
 
