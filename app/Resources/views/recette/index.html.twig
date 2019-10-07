@@ -2,7 +2,11 @@
 {% block title %}Recette{% endblock %}
 {% block body %}
     <h1>Recettes list</h1>
-
+    <ul>
+        <li>
+            <a href="{{ path('recette_new') }}">Create a new recette</a>
+        </li>
+    </ul>
     <table>
         <thead>
             <tr>
