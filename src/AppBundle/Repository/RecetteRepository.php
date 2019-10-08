@@ -10,4 +10,13 @@ namespace AppBundle\Repository;
  */
 class RecetteRepository extends \Doctrine\ORM\EntityRepository
 {
+//    public function showRecipe()
+//    {
+//        return $this->getEntityManager()
+//            ->createQuery(
+//                'SELECT nom FROM AppBundle:Recette nom ORDER BY ASC'
+//            )
+//            ->getResult();
+//    }
+
 }

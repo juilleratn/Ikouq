@@ -130,7 +130,23 @@ class RecetteController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('recette_delete', array('id' => $recette->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
+
     }
+
+    /**
+     * permet de voir une recette
+     *
+     * @Route("/recette/{nom}", name="recette_recipe")
+     *
+     * @return Response
+     */
+    public function showRecipe(Recette $recette){
+        return $this->render('recette/recipe.html.twig', [
+            'recette' => $recette
+        ]);
+    }
+
+
+
 }

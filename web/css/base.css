@@ -1,0 +1,64 @@
+body{
+    background-image: url("/web/image/bg.jpg") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+header{
+    background-image:url("/web/image/IKouq_logo.png");
+    width: 150px;height: 100px;
+    background-size: cover;
+    border: 1px solid #ff9802;
+    border-radius: 15px;
+}
+h1{
+    text-align: center;
+}
+form, table, h1, .info, .instruction, .colonne_droite, .topbar {
+    width:80%;
+    padding: 30px;
+    border: 1px solid #ff9802;
+    border-radius: 15px;
+    background: rgba(255, 250, 255, 0.6);
+    box-shadow: 0 0 20px 0 rgba(159, 86, 2, 0.66), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    margin: 5%;
+}
+.container h1{
+    width: 38%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+tr{
+    padding: 30px;
+    border: 1px solid #ff9802;
+    border-radius: 15px;
+    box-shadow: 0 0 20px 0 rgba(159, 86, 2, 0.66), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    text-align: center;
+}
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+/* Set a style for all buttons */
+input[type=submit] {
+    background-color: #FF9802;
+    color: #191919;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+input[type=submit]:hover {
+    background-color: rgba(255, 152, 2, 0.62);
+    color: #191919;
+    border: 1px solid #ff881a;
+}
+a{
+    border: 1px solid #ff9802;
+    background: rgba(255, 250, 255, 0.4);
+    box-shadow: 0 0 20px 0 rgba(159, 86, 2, 0.66), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}

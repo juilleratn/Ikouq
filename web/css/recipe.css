@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+}
+.hero{
+
+}
+.photo{
+    width: 300px;
+    height: 300px;
+
+}
+.info{}
+.topbar{}
+.part{}
+.hero{
+    display: flex;
+}
+.instruction{}
+.colonne_droite{}

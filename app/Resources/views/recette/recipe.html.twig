@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ recette.nom }}{% endblock %}
+{% block body %}
+
+
+    <div class="titre">
+            <h1>{{ recette.nom }}</h1>
+        </div>
+    <div class="container">
+        <div class="hero">
+            <div class="photo">
+                <img src="/image/{{ recette.urlPhoto }}" alt="{{ recette.nom }}">
+            </div>
+            <div class="info">
+                <div class="topbar">
+                    <ul class="li">{{ recette.regime }}</ul>
+                    <ul class="li">{{ recette.plat }}</ul>
+                </div>
+                <div class="part">
+                    <ul class="li"> Pour {{ recette.part }} personnes</ul>
+                    <ul class="li">{{ recette.duree }} minutes</ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero">
+        <div class="instruction">{{ recette.instruction }}</div>
+        <div class="colonne_droite">
+            <ul>
+                <li>{{ recette.tempsCuisson }}</li>
+                <li>{{ recette.thermostat }}</li>
+                <li>ingredients</li>
+            </ul>
+        </div>
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('recette_index') }}">Retour aux recettes</a>
+        </li>
+
+
+    </ul>
+{% endblock %}
