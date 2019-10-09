@@ -2,7 +2,9 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Quantite;
 use AppBundle\Entity\Recette;
+use AppBundle\Entity\Ingredient;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +17,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 class RecetteController extends Controller
 {
     /**
-     * Lists all recette entities.
+     * Répertorie toutes les recettes(Admin et user)
      *
      * @Route("/", name="recette_index")
      * @Method("GET")
@@ -32,7 +34,7 @@ class RecetteController extends Controller
     }
 
     /**
-     * Creates a new recette entity.
+     * Créer une nouvelle recette(Admin)
      *
      * @Route("/new", name="recette_new")
      * @Method({"GET", "POST"})
@@ -58,7 +60,7 @@ class RecetteController extends Controller
     }
 
     /**
-     * Finds and displays a recette entity.
+     * Trouve et affiche une recette(Admin)
      *
      * @Route("/{id}", name="recette_show")
      * @Method("GET")
@@ -74,7 +76,7 @@ class RecetteController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing recette entity.
+     * Affiche un formulaire pour modifier une recette existante.(Admin)
      *
      * @Route("/{id}/edit", name="recette_edit")
      * @Method({"GET", "POST"})
@@ -99,7 +101,7 @@ class RecetteController extends Controller
     }
 
     /**
-     * Deletes a recette entity.
+     * Supprime une recette(Admin)
      *
      * @Route("/{id}", name="recette_delete")
      * @Method("DELETE")
@@ -119,7 +121,7 @@ class RecetteController extends Controller
     }
 
     /**
-     * Creates a form to delete a recette entity.
+     * Crée un formulaire pour supprimer une recette.(Admin)
      *
      * @param Recette $recette The recette entity
      *
@@ -135,15 +137,26 @@ class RecetteController extends Controller
     }
 
     /**
-     * permet de voir une recette
+     * Permet de voir une recette( user)
      *
      * @Route("/recette/{nom}", name="recette_recipe")
      *
      * @return Response
      */
     public function showRecipe(Recette $recette){
+
+        $em = $this->getDoctrine()->getManager();
+        $ingredients = $em->getRepository('AppBundle:Ingredient')->findAll();
+
+        $quantites = [];
+        foreach($ingredients as $ingredient) {
+            $quantites = $em->getRepository('AppBundle:Quantite')->findQuantite($recette, $ingredient);
+        }
+
         return $this->render('recette/recipe.html.twig', [
-            'recette' => $recette
+            'recette' => $recette,
+            'ingredients' => $ingredients,
+            'quantites'=> $quantites
         ]);
     }
 

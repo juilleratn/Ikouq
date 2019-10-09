@@ -2,6 +2,8 @@ body{
     background-image: url("/web/image/bg.jpg") ;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
+    background-color: #191919;
 }
 header{
     background-image:url("/web/image/IKouq_logo.png");
@@ -13,7 +15,7 @@ header{
 h1{
     text-align: center;
 }
-form, table, h1, .info, .instruction, .colonne_droite, .topbar {
+form, table, h1, .part, .instruction, .colonne_droite, .topbar {
     width:80%;
     padding: 30px;
     border: 1px solid #ff9802;

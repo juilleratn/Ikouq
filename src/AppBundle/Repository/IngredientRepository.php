@@ -2,6 +2,9 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Ingredient;
+use AppBundle\Entity\Quantite;
+
 /**
  * IngredientRepository
  *
@@ -10,4 +13,12 @@ namespace AppBundle\Repository;
  */
 class IngredientRepository extends \Doctrine\ORM\EntityRepository
 {
+//    public function findIngredient(){
+//
+//        return $this->createQueryBuilder('u')
+//            ->select('u., u.fk_ingredient')
+//            ->from(Ingredient::class, 'u')
+//            ->where('u.fk_recette = :fk_recette');
+
+
 }

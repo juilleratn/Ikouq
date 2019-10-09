@@ -2,6 +2,9 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Ingredient;
+use AppBundle\Entity\Recette;
+
 /**
  * QuantiteRepository
  *
@@ -10,4 +13,15 @@ namespace AppBundle\Repository;
  */
 class QuantiteRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findQuantite(Recette $recette, Ingredient $ingredient){
+
+
+         return $this->createQueryBuilder('q')
+                    ->select('q.quantite, q.fk_ingredient')
+                    ->where('q.fk_recette = :fk_recette')
+                    ->andWhere('q.fk_ingredient = :fk_ingredient')
+                    ->setParameter('fk_recette', $recette)
+                    ->setParameter('fk_ingredient', $ingredient);
+
+    }
 }

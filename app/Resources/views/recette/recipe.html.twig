@@ -7,29 +7,58 @@
             <h1>{{ recette.nom }}</h1>
         </div>
     <div class="container">
-        <div class="hero">
-            <div class="photo">
-                <img src="/image/{{ recette.urlPhoto }}" alt="{{ recette.nom }}">
-            </div>
+        <div class="photo">
+                <img style="width: 70%;height:75%;border-radius: 15px" src="/image/{{ recette.urlPhoto }}" alt="{{ recette.nom }}">
+        </div>
             <div class="info">
                 <div class="topbar">
-                    <ul class="li">{{ recette.regime }}</ul>
-                    <ul class="li">{{ recette.plat }}</ul>
+                    <ul class="regime">
+                        <li>{{ recette.plat }} /</li>
+                        <li>{{ recette.regime }}</li>
+                    </ul>
                 </div>
                 <div class="part">
-                    <ul class="li"> Pour {{ recette.part }} personnes</ul>
-                    <ul class="li">{{ recette.duree }} minutes</ul>
+                    <ul class="pers">
+                        <li> Pour {{ recette.part }} personnes</li>
+                        <li>{{ recette.duree }} minutes</li>
+                    </ul>
                 </div>
             </div>
-        </div>
     </div>
     <div class="hero">
         <div class="instruction">{{ recette.instruction }}</div>
         <div class="colonne_droite">
             <ul>
-                <li>{{ recette.tempsCuisson }}</li>
-                <li>{{ recette.thermostat }}</li>
-                <li>ingredients</li>
+                <table>
+                    <thead>
+                    <tr>
+
+                        <th>Photo</th>
+                        <th>quantité</th>
+                        <th>ingredient</th>
+                        <th>mesure</th>
+                        <th>Nutri-score</th>
+                        <th>allergene</th> //Mettre a part et nom pour chaque ingredient
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for ingredient in ingredients %}
+
+                        <tr>
+
+                            <td><img style="width:75px; height:75px;" src="/image/{{ ingredient.urlPhoto }}"></td>
+                            <td>{% for quantite in quantites %}{{ quantite.quantite }} {% endfor %} </td>
+                            <td>{{ ingredient.nom }} </td>
+                            <td>{{ ingredient.mesure }}</td>
+                            <td>{{ ingredient.nutriScore }}</td>
+                            <td>{{ ingredient.allergene }}</td>
+
+                        </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% for ingredient in ingredients %} {{ ingredient.nom }} {% endfor %}
             </ul>
         </div>
     </div>
