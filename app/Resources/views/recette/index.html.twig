@@ -25,7 +25,7 @@
         {% for recette in recettes %}
             <tr>
 
-                <td><a href="{{ path('recette_recipe', { 'nom': recette.nom }) }}">{{ recette.nom }}</a></td>
+                <td><a href="{{ path('recette_recipe', { 'id': recette.id }) }}">{{ recette.nom }}</a></td>
                 <td><img style="width:75px; height:75px;" src="/image/{{ recette.urlPhoto }}"></td>
                 <td>{{ recette.part }} pers.</td>
                 <td>{{ recette.duree }} min</td>

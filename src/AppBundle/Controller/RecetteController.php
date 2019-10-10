@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Quantite;
 use AppBundle\Entity\Recette;
 use AppBundle\Entity\Ingredient;
+use AppBundle\Repository\QuantiteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -136,27 +137,45 @@ class RecetteController extends Controller
 
     }
 
+//    /**
+//     * Permet de voir une recette( user)
+//     *
+//     * @Route("/recette/{id}", name="recette_recipe")
+//     *
+//     * @return Response
+//     */
+//    public function showRecipe(Recette $recette, Ingredient $ingredient){
+//
+//        $em = $this->getDoctrine()->getManager();
+//        $ingredients = $em->getRepository('AppBundle:Ingredient')->findAll();
+//
+//        $quantites = [];
+//        foreach($ingredients as $ingredient) {
+//            $quantites = $em->getRepository('AppBundle:Quantite')->findQuantiteByIngredient($recette, $ingredient);
+//        }
+//        return $this->render('recette/recipe.html.twig', [
+//            'recette' => $recette,
+//            'ingredients' => $ingredients,
+//            'quantites'=> $quantites
+//        ]);
+//    }
+
+
+
     /**
-     * Permet de voir une recette( user)
-     *
-     * @Route("/recette/{nom}", name="recette_recipe")
-     *
-     * @return Response
-     */
-    public function showRecipe(Recette $recette){
-
+    //     * Permet de voir une recette( user)
+    //     *
+    //     * @Route("/recette/{id}", name="recette_recipe")
+    //     *
+    //     * @return Response
+    //     */
+    public function showRecipe($id, Recette $recette){
         $em = $this->getDoctrine()->getManager();
-        $ingredients = $em->getRepository('AppBundle:Ingredient')->findAll();
-
-        $quantites = [];
-        foreach($ingredients as $ingredient) {
-            $quantites = $em->getRepository('AppBundle:Quantite')->findQuantite($recette, $ingredient);
-        }
+        $recipe = $em->findQuantiteByIngredient($id);
 
         return $this->render('recette/recipe.html.twig', [
             'recette' => $recette,
-            'ingredients' => $ingredients,
-            'quantites'=> $quantites
+            'recipe' => $recipe
         ]);
     }
 

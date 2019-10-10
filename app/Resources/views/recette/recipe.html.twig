@@ -38,7 +38,8 @@
                         <th>ingredient</th>
                         <th>mesure</th>
                         <th>Nutri-score</th>
-                        <th>allergene</th> //Mettre a part et nom pour chaque ingredient
+                        <th>allergene</th>
+{#                        Mettre a part et nom pour chaque ingredient #}
                     </tr>
                     </thead>
                     <tbody>
@@ -47,7 +48,7 @@
                         <tr>
 
                             <td><img style="width:75px; height:75px;" src="/image/{{ ingredient.urlPhoto }}"></td>
-                            <td>{% for quantite in quantites %}{{ quantite.quantite }} {% endfor %} </td>
+                            <td>{% for quantite in quantites %} {{ quantite.fkIngredient }} {% endfor %}</td>
                             <td>{{ ingredient.nom }} </td>
                             <td>{{ ingredient.mesure }}</td>
                             <td>{{ ingredient.nutriScore }}</td>
@@ -58,11 +59,16 @@
                     {% endfor %}
                     </tbody>
                 </table>
-                {% for ingredient in ingredients %} {{ ingredient.nom }} {% endfor %}
+
             </ul>
         </div>
     </div>
     <ul>
+        <li>
+            {% for quantite in quantites %}
+                {{ quantite.fk_ingredient }}
+            {% endfor %}
+        </li>
         <li>
             <a href="{{ path('recette_index') }}">Retour aux recettes</a>
         </li>

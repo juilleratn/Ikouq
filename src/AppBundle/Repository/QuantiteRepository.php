@@ -4,6 +4,7 @@ namespace AppBundle\Repository;
 
 use AppBundle\Entity\Ingredient;
 use AppBundle\Entity\Recette;
+use Doctrine\ORM\Query\Expr\Join;
 
 /**
  * QuantiteRepository
@@ -13,15 +14,28 @@ use AppBundle\Entity\Recette;
  */
 class QuantiteRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findQuantite(Recette $recette, Ingredient $ingredient){
-
-
-         return $this->createQueryBuilder('q')
-                    ->select('q.quantite, q.fk_ingredient')
-                    ->where('q.fk_recette = :fk_recette')
-                    ->andWhere('q.fk_ingredient = :fk_ingredient')
-                    ->setParameter('fk_recette', $recette)
-                    ->setParameter('fk_ingredient', $ingredient);
-
+    public function findQuantiteByIngredient($id)
+    {
+        return $this->createQueryBuilder('q')
+            ->select('q.id', 'q.quantite', 'i.nom', 'i.nutriScore', 'i.mesure', 'i.urlPhoto', 'i.allergene')
+            ->where('q.id =' .$id)
+            ->innerJoin('q.fkRecette', 'qr', \Doctrine\ORM\Query\Expr\Join::WITH, 'q.fkRecette = qr.id' )
+            ->innerJoin('q.fkIngredient', 'qi', \Doctrine\ORM\Query\Expr\Join::WITH, 'q.fkIngredient = qi.id' )
+            ->getQuery()
+            ->getResult();
     }
+
+
+//    public function findQuantiteByIngredient(Recette $recette, Ingredient $ingredient){
+//
+//
+//         return $this->createQueryBuilder('q')
+//                    ->select('q.quantite, q.fkIngredient', 'q.fkRecette')
+//                    ->where('q.fkRecette = :fkRecette')
+//                    ->andWhere('q.fkIngredient = :fkIngredient')
+//                    ->setParameter('fkRecette', $recette)
+//                   ->setParameter('fkIngredient', $ingredient);
+//    }
+
 }
+
