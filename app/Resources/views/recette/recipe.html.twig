@@ -35,24 +35,23 @@
 
                         <th>Photo</th>
                         <th>quantité</th>
-                        <th>ingredient</th>
                         <th>mesure</th>
+                        <th>ingredient</th>
                         <th>Nutri-score</th>
                         <th>allergene</th>
 {#                        Mettre a part et nom pour chaque ingredient #}
                     </tr>
                     </thead>
                     <tbody>
-                    {% for ingredient in ingredients %}
+                    {% for nom, value in quantitesIngredients %}
 
                         <tr>
-
-                            <td><img style="width:75px; height:75px;" src="/image/{{ ingredient.urlPhoto }}"></td>
-                            <td>{% for quantite in quantites %} {{ quantite.fkIngredient }} {% endfor %}</td>
-                            <td>{{ ingredient.nom }} </td>
-                            <td>{{ ingredient.mesure }}</td>
-                            <td>{{ ingredient.nutriScore }}</td>
-                            <td>{{ ingredient.allergene }}</td>
+                            <td><img style="width:75px; height:75px;" src="/image/{{ value.objet.urlPhoto }}"></td>
+                            <td>{{ value.quantite }} </td>
+                            <td>{{ value.objet.mesure }}</td>
+                            <td>{{ nom }} </td>
+                            <td>{{ value.objet.nutriScore }}</td>
+                            <td>{{ value.objet.allergene }}</td>
 
                         </tr>
 
@@ -64,11 +63,7 @@
         </div>
     </div>
     <ul>
-        <li>
-            {% for quantite in quantites %}
-                {{ quantite.fk_ingredient }}
-            {% endfor %}
-        </li>
+
         <li>
             <a href="{{ path('recette_index') }}">Retour aux recettes</a>
         </li>

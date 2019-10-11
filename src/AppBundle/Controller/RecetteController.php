@@ -9,6 +9,7 @@ use AppBundle\Repository\QuantiteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Recette controller.
@@ -117,7 +118,6 @@ class RecetteController extends Controller
             $em->remove($recette);
             $em->flush();
         }
-
         return $this->redirectToRoute('recette_index');
     }
 
@@ -134,50 +134,39 @@ class RecetteController extends Controller
             ->setAction($this->generateUrl('recette_delete', array('id' => $recette->getId())))
             ->setMethod('DELETE')
             ->getForm();
-
     }
 
-//    /**
-//     * Permet de voir une recette( user)
-//     *
-//     * @Route("/recette/{id}", name="recette_recipe")
-//     *
-//     * @return Response
-//     */
-//    public function showRecipe(Recette $recette, Ingredient $ingredient){
-//
-//        $em = $this->getDoctrine()->getManager();
-//        $ingredients = $em->getRepository('AppBundle:Ingredient')->findAll();
-//
-//        $quantites = [];
-//        foreach($ingredients as $ingredient) {
-//            $quantites = $em->getRepository('AppBundle:Quantite')->findQuantiteByIngredient($recette, $ingredient);
-//        }
-//        return $this->render('recette/recipe.html.twig', [
-//            'recette' => $recette,
-//            'ingredients' => $ingredients,
-//            'quantites'=> $quantites
-//        ]);
-//    }
-
-
-
     /**
-    //     * Permet de voir une recette( user)
-    //     *
-    //     * @Route("/recette/{id}", name="recette_recipe")
-    //     *
-    //     * @return Response
-    //     */
-    public function showRecipe($id, Recette $recette){
+     * Permet de voir une recette complète(user)
+     *
+     * @Route("/recette/{nom}", name="recette_recipe")
+     * @param Recette $recette
+     *
+     * @return Response
+     */
+    public function showRecipe(Recette $recette){
+
         $em = $this->getDoctrine()->getManager();
-        $recipe = $em->findQuantiteByIngredient($id);
+
+        $results = $em->getRepository('AppBundle:Quantite')->getQuantitéByIngredients($recette);
+
+        $tabQuantitesIngredients = [];
+        $ingredients = [];
+                //Pour la recette choisi, on lui associe dans un tableau associatif les quantités et les ingredients(nom, mesure, etc)
+        foreach ($results as $result) {
+            $ingredients[] = $result->getFkIngredient();
+            $tabQuantitesIngredients[($result->getFkIngredient()->getNom())] =
+                [ "quantite" => $result->getQuantite(),
+                  "objet" => $result->getFkIngredient()]
+            ;
+        }
 
         return $this->render('recette/recipe.html.twig', [
             'recette' => $recette,
-            'recipe' => $recipe
+            'quantitesIngredients'=> $tabQuantitesIngredients
         ]);
     }
+
 
 
 
