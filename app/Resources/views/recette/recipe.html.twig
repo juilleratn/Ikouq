@@ -18,10 +18,24 @@
                     </ul>
                 </div>
                 <div class="part">
-                    <ul class="pers">
-                        <li> Pour {{ recette.part }} personnes</li>
-                        <li>{{ recette.duree }} minutes</li>
-                    </ul>
+                    <div class="pers">
+                        <div class="moins">
+                            <input type="button" value="-"/>
+                        </div>
+                        <div class="nb-pers" recette-part="{{ recette.part }}">{#uniquement la syntax => a voir avec du jquery.#}
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function(){
+                                    var nbPers = document.querySelector('.nb-pers');
+                                    var nbPersRecette = nbPers.recettePart;
+                                });
+                            </script>
+                        </div>
+                        <div class="plus">
+                            <input type="button" class="plus" value="+"/>
+                        </div>
+                    </div>
+                    <div>{{ recette.duree }} minutes</div>
+
                 </div>
             </div>
     </div>
@@ -58,16 +72,11 @@
                     {% endfor %}
                     </tbody>
                 </table>
-
             </ul>
         </div>
     </div>
-    <ul>
+    <div class="retour">
+        <button type="button"><a href="javascript:history.go(-1)">Retour</a></button>
+    </div>
 
-        <li>
-            <a href="{{ path('recette_index') }}">Retour aux recettes</a>
-        </li>
-
-
-    </ul>
 {% endblock %}
