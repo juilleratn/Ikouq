@@ -20,22 +20,33 @@
                 <div class="part">
                     <div class="pers">
                         <div class="moins">
-                            <input type="button" value="-"/>
+                            Pour
+                            <input type="button" id="moins" value="-" onclick="subtract()"/>
                         </div>
-                        <div class="nb-pers" recette-part="{{ recette.part }}">{#uniquement la syntax => a voir avec du jquery.#}
-                            <script>
-                                document.addEventListener('DOMContentLoaded', function(){
-                                    var nbPers = document.querySelector('.nb-pers');
-                                    var nbPersRecette = nbPers.recettePart;
-                                });
-                            </script>
-                        </div>
-                        <div class="plus">
-                            <input type="button" class="plus" value="+"/>
-                        </div>
-                    </div>
-                    <div>{{ recette.duree }} minutes</div>
+                        <div id="nbPart" >{{ recette.part }}</div>
+                        <script type="text/javascript">
 
+                            $count = {{ recette.part }};
+                            function add(){
+                                $count++;
+                                $("#nbPart").html($count);
+                                return $count;
+                            }
+                            function subtract(){
+                                if ($count <= 1) {
+                                    $count = 1;
+                                }else{
+                                    $count--;
+                                    $("#nbPart").html($count);
+                                    return $count;
+                                }
+                            }
+                        </script>
+                    </div>
+                        <div class="plus">
+                            <input type="button" id="plus" value="+" onclick="add()"/> personnes
+                        </div>
+                    <div>{{ recette.duree }} minutes</div>
                 </div>
             </div>
     </div>
@@ -46,29 +57,39 @@
                 <table>
                     <thead>
                     <tr>
-
                         <th>Photo</th>
                         <th>quantité</th>
                         <th>mesure</th>
                         <th>ingredient</th>
                         <th>Nutri-score</th>
                         <th>allergene</th>
-{#                        Mettre a part et nom pour chaque ingredient #}
                     </tr>
                     </thead>
                     <tbody>
                     {% for nom, value in quantitesIngredients %}
-
                         <tr>
                             <td><img style="width:75px; height:75px;" src="/image/{{ value.objet.urlPhoto }}"></td>
-                            <td>{{ value.quantite }} </td>
+                            <td id="quantite">{{ value.quantite }}</td>
                             <td>{{ value.objet.mesure }}</td>
                             <td>{{ nom }} </td>
                             <td>{{ value.objet.nutriScore }}</td>
                             <td>{{ value.objet.allergene }}</td>
-
                         </tr>
+                        <script type="text/javascript">
 
+                            $value = $("#nbPart").value;
+                            $qIngredient= {{ value.quantite }};
+                            $rPart = {{ recette.part }};
+                            $plop = ( $qIngredient / $rPart ) * $count;
+                     //       $('#quantite').html($plop);
+
+                            console.log('A ' +$count);
+                            console.log('B ' +$qIngredient);
+                            console.log("C " +$rPart);
+                            console.log("D " +$plop);
+
+
+                        </script>
                     {% endfor %}
                     </tbody>
                 </table>
