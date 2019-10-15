@@ -23,32 +23,14 @@
                             Pour
                             <input type="button" id="moins" value="-" onclick="subtract()"/>
                         </div>
-                        <div id="nbPart" >{{ recette.part }}</div>
-                        <script type="text/javascript">
-
-                            $count = {{ recette.part }};
-                            function add(){
-                                $count++;
-                                $("#nbPart").html($count);
-                                return $count;
-                            }
-                            function subtract(){
-                                if ($count <= 1) {
-                                    $count = 1;
-                                }else{
-                                    $count--;
-                                    $("#nbPart").html($count);
-                                    return $count;
-                                }
-                            }
-                        </script>
+                        <div id="nbPart"  >{{ recette.part }}</div>
                     </div>
-                        <div class="plus">
-                            <input type="button" id="plus" value="+" onclick="add()"/> personnes
-                        </div>
+                    <div class="plus">
+                        <input type="button" id="plus" value="+" onclick="add()"/> personnes
+                    </div>
                     <div>{{ recette.duree }} minutes</div>
+                    </div>
                 </div>
-            </div>
     </div>
     <div class="hero">
         <div class="instruction">{{ recette.instruction }}</div>
@@ -68,29 +50,53 @@
                     <tbody>
                     {% for nom, value in quantitesIngredients %}
                         <tr>
-                            <td><img style="width:75px; height:75px;" src="/image/{{ value.objet.urlPhoto }}"></td>
-                            <td id="quantite">{{ value.quantite }}</td>
+                            <td><img style="width:75px; height:75px;border-radius: 15px" src="/image/{{ value.objet.urlPhoto }}"></td>
+                            <td class="quantite">{{ value.quantite }}</td>
                             <td>{{ value.objet.mesure }}</td>
                             <td>{{ nom }} </td>
                             <td>{{ value.objet.nutriScore }}</td>
                             <td>{{ value.objet.allergene }}</td>
                         </tr>
-                        <script type="text/javascript">
-
-                            $value = $("#nbPart").value;
-                            $qIngredient= {{ value.quantite }};
-                            $rPart = {{ recette.part }};
-                            $plop = ( $qIngredient / $rPart ) * $count;
-                     //       $('#quantite').html($plop);
-
-                            console.log('A ' +$count);
-                            console.log('B ' +$qIngredient);
-                            console.log("C " +$rPart);
-                            console.log("D " +$plop);
-
-
-                        </script>
                     {% endfor %}
+<script type="text/javascript">
+    $nombrePart = {{ recette.part }};
+    $quantiteIngredient= $('.quantite');
+    $recettePart = {{ recette.part }};
+
+    function ingredient()
+    {
+        $.each($quantiteIngredient, function(index)
+        {
+            console.log('value '+$quantiteIngredient[index].firstChild.data);
+            $resultatIngredient = ($quantiteIngredient[index].firstChild.data / $recettePart ) *$nombrePart;
+            console.log ('resulat '+$resultatIngredient);
+            document.getElementsByClassName("quantite")
+            
+
+             //$('.quantite').html($resultatIngredient);
+        });
+    }
+
+    function add()
+    {
+        $nombrePart++;
+        $("#nbPart").html($nombrePart);
+        $value = $("#nbPart").value;
+        ingredient();
+    }
+
+    function subtract()
+    {
+        if ($nombrePart <= 1) {
+            $nombrePart = 1;
+        }else{
+            $nombrePart--;
+            $("#nbPart").html($nombrePart);
+            ingredient();
+        }
+    }
+
+</script>
                     </tbody>
                 </table>
             </ul>
