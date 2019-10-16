@@ -147,7 +147,6 @@ class RecetteController extends Controller
     public function showRecipe(Recette $recette){
 
         $em = $this->getDoctrine()->getManager();
-
         $results = $em->getRepository('AppBundle:Quantite')->getQuantitéByIngredients($recette);
 
         $tabQuantitesIngredients = [];

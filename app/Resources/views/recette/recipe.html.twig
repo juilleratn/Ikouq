@@ -21,12 +21,12 @@
                     <div class="pers">
                         <div class="moins">
                             Pour
-                            <input type="button" id="moins" value="-" onclick="subtract()"/>
+                            <input type="button" id="moins" value="-" onclick="soustraire()"/>
                         </div>
-                        <div id="nbPart"  >{{ recette.part }}</div>
+                        <div id="nbPart">{{ recette.part }}</div>
                     </div>
                     <div class="plus">
-                        <input type="button" id="plus" value="+" onclick="add()"/> personnes
+                        <input type="button" id="plus" value="+" onclick="ajouter()"/> personnes
                     </div>
                     <div>{{ recette.duree }} minutes</div>
                     </div>
@@ -51,7 +51,7 @@
                     {% for nom, value in quantitesIngredients %}
                         <tr>
                             <td><img style="width:75px; height:75px;border-radius: 15px" src="/image/{{ value.objet.urlPhoto }}"></td>
-                            <td class="quantite">{{ value.quantite }}</td>
+                            <td class="quantite" id="quant{{ loop.index - 1 }}">{{ value.quantite }}</td>
                             <td>{{ value.objet.mesure }}</td>
                             <td>{{ nom }} </td>
                             <td>{{ value.objet.nutriScore }}</td>
@@ -59,43 +59,51 @@
                         </tr>
                     {% endfor %}
 <script type="text/javascript">
-    $nombrePart = {{ recette.part }};
+    $nombrePart = {{ recette.part }};  // le nombre de part voulu au final
     $quantiteIngredient= $('.quantite');
-    $recettePart = {{ recette.part }};
+    $recettePart = {{ recette.part }}; //le nombre de part à la base de la recette
+    $resultatIngredient = [];
+    i=0;
+    j=0;
 
-    function ingredient()
+    function calculIngredient()  //  calcul de la quantite/part
     {
         $.each($quantiteIngredient, function(index)
         {
-            console.log('value '+$quantiteIngredient[index].firstChild.data);
-            $resultatIngredient = ($quantiteIngredient[index].firstChild.data / $recettePart ) *$nombrePart;
-            console.log ('resulat '+$resultatIngredient);
-            document.getElementsByClassName("quantite")
-            
-
-             //$('.quantite').html($resultatIngredient);
+            $resultatIngredient [i]= [($quantiteIngredient[index].firstChild.data / $recettePart ) *$nombrePart];
+            i++;
+            console.log ('resulat', $resultatIngredient);
         });
     }
+     function fixeIngredient()  // inscris pour  la quantité de l'ingrédinet
+     {
+         for(j=0;j<$resultatIngredient.length;j++){
+             $('#quant'+j).html($resultatIngredient[j]);
+         }
+     }
 
-    function add()
+    function ajouter()  // ajoute une part
     {
         $nombrePart++;
         $("#nbPart").html($nombrePart);
         $value = $("#nbPart").value;
-        ingredient();
+        calculIngredient();
+        fixeIngredient();
+        i=0;
     }
 
-    function subtract()
+    function soustraire() // enlève une part
     {
         if ($nombrePart <= 1) {
             $nombrePart = 1;
         }else{
             $nombrePart--;
             $("#nbPart").html($nombrePart);
-            ingredient();
+            calculIngredient();
+            fixeIngredient();
+            i=0;
         }
     }
-
 </script>
                     </tbody>
                 </table>
