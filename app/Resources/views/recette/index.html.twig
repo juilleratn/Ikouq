@@ -2,54 +2,129 @@
 {% block title %}Recette{% endblock %}
 {% block body %}
     <h1>Recettes list</h1>
-    <ul>
-        <li>
-            <a href="{{ path('recette_new') }}">Create a new recette</a>
-        </li>
+    <script>
+            $(function() {
+                $('#onglets').css('display', 'block');
+                $('#onglets').click(function(event)
+                {
+                    var actuel = event.target;
+                    if (!/li/i.test(actuel.nodeName) || actuel.className.indexOf('actif') > -1) {
+                        alert(actuel.nodeName);
+                        return;
+                    }
+                    $(actuel).addClass('actif').siblings().removeClass('actif');
+                    setDisplay();
+                });
+                function setDisplay() {
+                    var modeAffichage;
+                    $('#onglets li').each(function(rang)
+                    {
+                        modeAffichage = $(this).hasClass('actif') ? '' : 'none';
+                        $('.item').eq(rang).css('display', modeAffichage);
+                    });
+                }
+                setDisplay();
+            });
+        </script>
+    </head>
+    <body>
+
+    <ul id="onglets">
+        <li class="actif">Entrée</li>
+        <li>Plat principal</li>
+        <li>Dessert</li>
     </ul>
-    <table>
-        <thead>
-            <tr>
+    <div id="contenu">
+        <div class="item">
+            <h2>Entrée</h2>
+            <table>
+                {% for recette in recettes | sort %}
+                    {% if (recette.plat =='Entrée') %}
+                        
+                    <tr>
+                        <td><a href='{{ path('recette_recipe', { 'nom': recette.nom }) }}'>{{ recette.nom }}</a></td>
+                        <td><img style='width:75px; height:75px;' src='/image/{{ recette.urlPhoto }}'></td>
+                        <td>{{ recette.part }} pers.</td>
+                        <td>{{ recette.duree }} min</td>
+                        <td>{{ recette.regime  }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href='{{ path('recette_show', { 'id': recette.id }) }}'>show</a>
+                                </li>
+                                <li>
+                                    <a href='{{ path('recette_edit', { 'id': recette.id }) }}'>edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
 
-                <th>Nom</th>
-                <th></th>
-                <th>Pour</th>
-                <th>Duree</th>
-                <th>Regime</th>
-                <th>Plat</th>
+        </div>
+        <div class="item">
+            <h2>Plat principal</h2>
+            <p>
 
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for recette in recettes %}
-            <tr>
-
-                <td><a href="{{ path('recette_recipe', { 'nom': recette.nom }) }}">{{ recette.nom }}</a></td>
-                <td><img style="width:75px; height:75px;" src="/image/{{ recette.urlPhoto }}"></td>
-                <td>{{ recette.part }} pers.</td>
-                <td>{{ recette.duree }} min</td>
-                <td>{{ recette.regime }}</td>
-                <td>{{ recette.plat }}</td>
-
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('recette_show', { 'id': recette.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('recette_edit', { 'id': recette.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+            </p>
+            <table>
+                {% for recette in recettes %}
+                    {% if (recette.plat =='Plat principal') %}
+                    <tr>
+                        <td><a href="{{ path('recette_recipe', { 'nom': recette.nom }) }}">{{ recette.nom }}</a></td>
+                        <td><img style="width:75px; height:75px;" src="/image/{{ recette.urlPhoto }}"></td>
+                        <td>{{ recette.part }} pers.</td>
+                        <td>{{ recette.duree }} min</td>
+                        <td>{{ recette.regime }}</td>
+                        <td>{{ recette.plat ('Plat principal') }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('recette_show', { 'id': recette.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('recette_edit', { 'id': recette.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="item">
+            <h2>Dessert</h2>
+            <table>
+                {% for recette in recettes %}
+                    {% if (recette.plat =='Dessert') %}
+                    <tr>
+                        <td><a href="{{ path('recette_recipe', { 'nom': recette.nom }) }}">{{ recette.nom }}</a></td>
+                        <td><img style="width:75px; height:75px;" src="/image/{{ recette.urlPhoto }}"></td>
+                        <td>{{ recette.part }} pers.</td>
+                        <td>{{ recette.duree }} min</td>
+                        <td>{{ recette.regime }}</td>
+                        <td>{{ recette.plat ('Dessert') }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('recette_show', { 'id': recette.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('recette_edit', { 'id': recette.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    </body>
+    </html>
     <ul>
         <li>
-
             <a href="{{ path('recette_new') }}">Create a new recette</a>
         </li>
     </ul>

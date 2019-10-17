@@ -51,7 +51,7 @@
                     {% for nom, value in quantitesIngredients %}
                         <tr>
                             <td><img style="width:75px; height:75px;border-radius: 15px" src="/image/{{ value.objet.urlPhoto }}"></td>
-                            <td class="quantite" id="quant{{ loop.index - 1 }}">{{ value.quantite }}</td>
+                            <td class="quantite" id="quant{{ loop.index - 1 }}" data-ing="{{ value.quantite }}">{{ value.quantite }}</td>
                             <td>{{ value.objet.mesure }}</td>
                             <td>{{ nom }} </td>
                             <td>{{ value.objet.nutriScore }}</td>
@@ -63,19 +63,25 @@
     $quantiteIngredient= $('.quantite');
     $recettePart = {{ recette.part }}; //le nombre de part à la base de la recette
     $resultatIngredient = [];
+
     i=0;
     j=0;
+    $valueQ = [this.dataset.ing] ;
+
+    //console.log($valueQ);
 
     function calculIngredient()  //  calcul de la quantite/part
     {
         $.each($quantiteIngredient, function(index)
         {
+            $valueQ =
+            //$resultatIngredient [i]= [(this.dataset.valueQ / $recettePart ) *$nombrePart];
             $resultatIngredient [i]= [($quantiteIngredient[index].firstChild.data / $recettePart ) *$nombrePart];
             i++;
-            console.log ('resulat', $resultatIngredient);
-        });
+
+        });console.log ('resulat', $resultatIngredient);
     }
-     function fixeIngredient()  // inscris pour  la quantité de l'ingrédinet
+     function fixeIngredient()  // inscris pour  la quantité de l'ingrédient
      {
          for(j=0;j<$resultatIngredient.length;j++){
              $('#quant'+j).html($resultatIngredient[j]);
