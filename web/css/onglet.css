@@ -1,23 +1,25 @@
-#onglets{
+#ongletsPlat{
     display: none;
+    margin-left: 5%;
 }
-#onglets li{
+#ongletsPlat li{
     position: relative;
     float: left;
     list-style: none;
     padding: 2px 5px 7px;
     margin-right: 5px;
-
-    cursor: pointer; /*https://babylon-design.com/avoir-un-curseur-personnalise-sur-son-site/*/
-    background-color: #EEEEEE;
+    margin-bottom: 5px;
     color:  #191919;
     z-index: 1;
 
-    border: 1px solid #ff9802;
-    background: rgba(255, 250, 255, 0.4);
-    box-shadow: 0 0 20px 0 rgba(159, 86, 2, 0.66), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border: 2px solid #ff9802;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: rgba(255, 250, 255, 0.6);
+    box-shadow: 0 0 20px 0 rgba(159, 86, 2, 0.66), 0 5px 5px 0 rgba(0, 0, 0, 0.35);
+
 }
-#onglets .actif{
+#ongletsPlat .actif{
     border-bottom: none;
     font-weight: bold;
     z-index: 100;
@@ -26,18 +28,18 @@
 #contenu{
     clear: both;
     position: relative;
-    margin: 0 20px;
+    margin: 0 5%;
     padding: 10px;
 
     z-index: 5;
     top: -6px;
-    background-color: #EEEEEE;
     color: #191919;
-    width: 500px;
+    width: 80%;
     overflow: hidden;
     border-radius: 15px;
 
-    border: 1px solid #ff9802;
+    border: 2px solid #ff9802;
     background: rgba(255, 250, 255, 0.4);
     box-shadow: 0 0 20px 0 rgba(159, 86, 2, 0.66), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
+

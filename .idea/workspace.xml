@@ -2,11 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8220f98a-29c9-4c94-b3c7-3465168e1d32" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Ikouq.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Ikouq.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/AppKernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/AppKernel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/recette/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/recette/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/recette/recipe.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/recette/recipe.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/css/onglet.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/onglet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/css/recipe.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/recipe.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/image/IKouq_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/web/image/IKouq_logo.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,20 +49,34 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
+            <state relative-caret-position="330">
+              <caret line="22" column="65" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/recette/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1305">
+              <caret line="96" column="38" selection-start-line="96" selection-start-column="38" selection-end-line="96" selection-end-column="38" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#td#1;n#tr#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#td#5;n#tr#0;n#div#0;n#div#0;n#body#0;n#!!top" />
+                <element signature="n#style#0;n#img#0;n#td#1;n#tr#0;n#div#1;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#td#5;n#tr#0;n#div#1;n#div#0;n#body#0;n#!!top" />
+                <element signature="n#style#0;n#img#0;n#td#1;n#tr#0;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#td#5;n#tr#0;n#div#2;n#div#0;n#body#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/recette/index.html.twig">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/recette/recipe.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="55" column="94" selection-start-line="55" selection-start-column="94" selection-end-line="55" selection-end-column="94" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#td#1;n#tr#0;n#table#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="690">
+              <caret line="72" column="8" lean-forward="true" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -60,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/css/onglet.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+            <state relative-caret-position="660">
+              <caret line="44" selection-start-line="44" selection-end-line="44" />
             </state>
           </provider>
         </entry>
@@ -78,17 +102,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/css/base.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="49">
-              <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/recette/recipe.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
-              <caret line="68" column="19" selection-start-line="68" selection-start-column="19" selection-end-line="68" selection-end-column="19" />
+            <state relative-caret-position="45">
+              <caret line="3" column="15" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -108,6 +123,10 @@
       <find>count</find>
       <find>$count</find>
       <find>modeAffichage</find>
+      <find>onglets</find>
+      <find>ongletsP</find>
+      <find>knp_snappy</find>
+      <find>regime</find>
     </findStrings>
     <replaceStrings>
       <replace>i</replace>
@@ -115,6 +134,8 @@
       <replace>nbPart</replace>
       <replace>$nombrePart</replace>
       <replace>$modeAffichage</replace>
+      <replace>ongletsP</replace>
+      <replace>ongletsPlat</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -128,7 +149,6 @@
         <option value="$PROJECT_DIR$/app/Resources/views/affichage/index.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/AffichageController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/recette/recipe.hmtl.twig" />
-        <option value="$PROJECT_DIR$/web/css/recipe.css" />
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/IngredientRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Ingredient.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/RecetteRepository.php" />
@@ -136,11 +156,15 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/QuantiteRepository.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/recette/dietChoice.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/RecetteController.php" />
-        <option value="$PROJECT_DIR$/app/Resources/views/recette/recipe.html.twig" />
+        <option value="$PROJECT_DIR$/app/AppKernel.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
+        <option value="$PROJECT_DIR$/app/config/config.yml" />
+        <option value="$PROJECT_DIR$/web/css/recipe.css" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/web/css/onglet.css" />
         <option value="$PROJECT_DIR$/web/css/base.css" />
         <option value="$PROJECT_DIR$/app/Resources/views/recette/index.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/recette/recipe.html.twig" />
       </list>
     </option>
   </component>
@@ -190,6 +214,9 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-bundle" />
       <path value="$PROJECT_DIR$/vendor/jdorn/sql-formatter" />
       <path value="$PROJECT_DIR$/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-snappy" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-snappy-bundle" />
+      <path value="$PROJECT_DIR$/vendor/h4cc/wkhtmltopdf-amd64" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
@@ -206,7 +233,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -235,6 +261,24 @@
             <path>
               <item name="Ikouq" type="b2602c69:ProjectViewProjectNode" />
               <item name="Ikouq" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Ikouq" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Ikouq" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="AppBundle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Ikouq" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Ikouq" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="AppBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Ikouq" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Ikouq" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -247,6 +291,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -299,12 +344,13 @@
       <workItem from="1570777346939" duration="8173000" />
       <workItem from="1571037154263" duration="23371000" />
       <workItem from="1571122897265" duration="42009000" />
-      <workItem from="1571312624741" duration="7873000" />
+      <workItem from="1571312624741" duration="8426000" />
+      <workItem from="1571383740199" duration="20526000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151770000" />
+    <option name="totallyTimeSpent" value="172849000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="927" height="1055" extended-state="4" />
@@ -417,13 +463,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/affichage/index.html.twig" />
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Tests/Controller/RecetteControllerTest.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -533,24 +572,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/recette/recipe.html.twig">
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="68" column="19" selection-start-line="68" selection-start-column="19" selection-end-line="68" selection-end-column="19" />
+        <state relative-caret-position="1035">
+          <caret line="69" column="15" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/onglet.css">
+    <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        <state relative-caret-position="480">
+          <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/base.css">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="49">
-          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        <state relative-caret-position="570">
+          <caret line="40" column="7" selection-start-line="21" selection-start-column="6" selection-end-line="40" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -561,20 +600,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+    <entry file="file://$PROJECT_DIR$/web/css/onglet.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="660">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/base.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="15" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/recette/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="55" column="94" selection-start-line="55" selection-start-column="94" selection-end-line="55" selection-end-column="94" />
+        <state relative-caret-position="1305">
+          <caret line="96" column="38" selection-start-line="96" selection-start-column="38" selection-end-line="96" selection-end-column="38" />
           <folding>
-            <element signature="n#style#0;n#img#0;n#td#1;n#tr#0;n#table#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#td#5;n#tr#0;n#div#0;n#div#0;n#body#0;n#!!top" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#0;n#div#1;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#td#5;n#tr#0;n#div#1;n#div#0;n#body#0;n#!!top" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#0;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#td#5;n#tr#0;n#div#2;n#div#0;n#body#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="65" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/recette/recipe.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="72" column="8" lean-forward="true" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="8" />
         </state>
       </provider>
     </entry>

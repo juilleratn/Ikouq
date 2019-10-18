@@ -11,10 +11,18 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-    <header></header>
+    <header>
+        <div class="ikouq">
+            <div class="logo"></div>
+            <div class="marque">
+                <p>IKouq</p>
+            </div>
+        </div>
+    </header>
     <style>
-        body{background-image:url("{{ asset('/image/bg.jpg') }}");}
-        header{background-image:url("{{ asset('/image/IKouq_logo.png') }}");}
+        body{background-image:url("{{ asset('/image/bg.jpg') }}");cursor: url("{{ asset('cursor.cur') }}"), pointer;}
+        .logo{background-image:url("{{ asset('/image/IKouq_logo.png') }}");background-size: contain;background-repeat: no-repeat}
+        a{cursor: url("{{ asset('fourchette.cur') }}"), pointer;}
          </style>
     {% block javascripts %}
         <script
@@ -25,6 +33,9 @@
 
     {% endblock %}
         {% block body %}{% endblock %}
-
+<footer>
+    mentions légales
+</footer>
     </body>
+
 </html>

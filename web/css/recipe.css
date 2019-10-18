@@ -5,12 +5,11 @@
 }
 .info{
     text-align: center;
-
 }
 .topbar{
     height: 20px;
 }
-.regime{
+.platRegime{
     display: flex;
 }
 li{
