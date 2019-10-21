@@ -10,89 +10,104 @@
         <div class="photo">
                 <img style="width: 70%;height:75%;border-radius: 15px" src="/image/{{ recette.urlPhoto }}" alt="{{ recette.nom }}">
         </div>
-            <div class="info">
-                <div class="topbar">
-                    <ul class="platRegime">
-                        <li>{{ recette.plat }} /</li>
-                        <li>{{ recette.regime }}(icone)</li>
-                    </ul>
+        <div class="info">
+            <div class="topbar">
+                <ul class="platRegime">
+                    <li>{{ recette.plat }}/</li>
+                    <li>{{ recette.regime }}(icone)</li>
+                </ul>
+            </div>
+            <div class="part">
+                <div class="pers">
+                    <div class="moins">
+                        Pour
+                        <input type="button" id="moins" value="-" onclick="soustraire()"/>
+                    </div>
+                    <div id="nbPart">{{ recette.part }}</div>
                 </div>
-                <div class="part">
-                    <div class="pers">
-                        <div class="moins">
-                            Pour
-                            <input type="button" id="moins" value="-" onclick="soustraire()"/>
-                        </div>
-                        <div id="nbPart">{{ recette.part }}</div>
-                    </div>
-                    <div class="plus">
-                        <input type="button" id="plus" value="+" onclick="ajouter()"/> personnes (icone)
-                    </div>
-                    <div>{{ recette.duree }} minutes(icone duree)</div>
-                    </div>
+                <div class="plus">
+                    <input type="button" id="plus" value="+" onclick="ajouter()"/> <i class="fas fa-user"></i>
                 </div>
+                <div>{{ recette.duree }} min <i class="far fa-clock"></i></div>
+            </div>
+        </div>
     </div>
+
     <div class="hero">
-        <div class="instruction">{{ recette.instruction }}</div>
+        <ul id="ongletsPlat">
+            <li class="actif">Instructions</li>
+            <li>Ingrédients</li>
+        </ul>
+
+        <div id="contenu">
+            <div class="item">
+        <div class="instruction">{{ recette.instruction |raw }}</div>
+            </div>
+            <div class="item">
         <div class="colonne_droite">
             <ul>
                 <table>
                     <thead>
                     <tr>
-                        <th>Photo</th>
-                        <th>quantité/ingredient</th>
-                        <th>allergene</th>
-                        <th>Nutri-score</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Allergènes</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for nom, value in quantitesIngredients %}
                         <tr>
                             <td><img style="width:75px; height:75px;border-radius: 15px" src="/image/{{ value.objet.urlPhoto }}"></td>
-                            <td class="quantite" id="quant{{ loop.index - 1 }}" data-ing="{{ value.quantite }}">{{ value.quantite }} {{ value.objet.mesure }} de {{ nom }} </td>
+                            <td class="quantite" id="quant{{ loop.index - 1 }}" >{{ value.quantite }} {{ value.objet.mesure }} de {{ nom }} </td>
+                            <td>{% if (value.objet.nutriScore == '1') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('image/NS_a.png') }}">{% endif %}
+                                {% if (value.objet.nutriScore == '2') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('/image/NS_b.png') }}">{% endif %}
+                                {% if (value.objet.nutriScore == '3') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('/image/NS_c.png') }}">{% endif %}
+                                {% if (value.objet.nutriScore == '4') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('/image/NS_d.png') }}">{% endif %}
+                                {% if (value.objet.nutriScore == '5') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('/image/NS_e.png') }}">{% endif %}
+                            </td>
                             <td>{% if (value.objet.allergene  == 'none') == false %}
                                 {{ value.objet.allergene }}
                                 {% endif %}</td>
-                            <td>{% if (value.objet.nutriScore == '1') %}<img style="width:75px; height:75px;border-radius: 15px" src="{{ asset('NS_a.png') }}">A{% endif %}
-                                {% if (value.objet.nutriScore == '2') %}<img style="width:75px; height:75px;border-radius: 15px" src="NS_b.png">B{% endif %}
-                                {% if (value.objet.nutriScore == '3') %}<img style="width:75px; height:75px;border-radius: 15px" src="NS_c.png">C{% endif %}
-                                {% if (value.objet.nutriScore == '4') %}<img style="width:75px; height:75px;border-radius: 15px" src="/NS_d.png">D{% endif %}
-                                {% if (value.objet.nutriScore == '5') %}<img style="width:75px; height:75px;border-radius: 15px" src="/NS_e.png">E{% endif %}
 
-
-
-                            </td>
                         </tr>
+
+
+
+                    </tbody>
+
                     {% endfor %}
+                </table>
+            </ul>
+        </div>
+            </div>
+    </div>
+    <div class="retour">
+        <button type="button"><a href="javascript:history.go(-1)">Retour</a></button>
+    </div>
 <script type="text/javascript">
     $nombrePart = {{ recette.part }};  // le nombre de part voulu au final
     $quantiteIngredient= $('.quantite');
     $recettePart = {{ recette.part }}; //le nombre de part à la base de la recette
     $resultatIngredient = [];
-
     i=0;
     j=0;
-    $valueQ = [this.dataset.ing] ;
 
-    //console.log($valueQ);
-
-    function calculIngredient()  //  calcul de la quantite/part
+    function calculIngredient()  //  calcule de la quantite/part
     {
         $.each($quantiteIngredient, function(index)
         {
-            $valueQ =
-            //$resultatIngredient [i]= [(this.dataset.valueQ / $recettePart ) *$nombrePart];
             $resultatIngredient [i]= [($quantiteIngredient[index].firstChild.data / $recettePart ) *$nombrePart];
             i++;
-
-        });console.log ('resulat', $resultatIngredient);
+            console.log ('resulat', $resultatIngredient);
+        });
     }
-     function fixeIngredient()  // inscris pour  la quantité de l'ingrédient
-     {
-         for(j=0;j<$resultatIngredient.length;j++){
-             $('#quant'+j).html($resultatIngredient[j]);
-         }
-     }
+    function fixeIngredient()  // inscris pour  la quantité de l'ingrédinet
+    {
+        for(j=0;j<$resultatIngredient.length;j++){
+            $('#quant'+j).html($resultatIngredient[j]);
+        }
+    }
 
     function ajouter()  // ajoute une part
     {
@@ -116,14 +131,31 @@
             i=0;
         }
     }
-</script>
-                    </tbody>
-                </table>
-            </ul>
-        </div>
-    </div>
-    <div class="retour">
-        <button type="button"><a href="javascript:history.go(-1)">Retour</a></button>
-    </div>
 
+</script>
+<script>
+    $(function() {
+        $('#ongletsPlat').css('display', 'block');
+        $('#ongletsPlat').click(function(event)
+        {
+            var actuel = event.target;
+            if (!/li/i.test(actuel.nodeName) || actuel.className.indexOf('actif') > -1) {
+                return;
+            }
+            $(actuel).addClass('actif').siblings().removeClass('actif');
+            setDisplay();
+        });
+        function setDisplay() {
+            var modeAffichage;
+            $('#ongletsPlat li').each(function(rang)
+            {
+                modeAffichage = $(this).hasClass('actif') ? '' : 'none';
+                $('.item').eq(rang).css('display', modeAffichage);
+            });
+        }
+        setDisplay();
+    });
+
+
+</script>
 {% endblock %}

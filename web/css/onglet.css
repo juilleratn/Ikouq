@@ -12,7 +12,7 @@
     color:  #191919;
     z-index: 1;
 
-    border: 2px solid #ff9802;
+    border: 1px solid #ff9802;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     background: rgba(255, 250, 255, 0.6);
@@ -38,7 +38,7 @@
     overflow: hidden;
     border-radius: 15px;
 
-    border: 2px solid #ff9802;
+    border: 1px solid #ff9802;
     background: rgba(255, 250, 255, 0.4);
     box-shadow: 0 0 20px 0 rgba(159, 86, 2, 0.66), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }

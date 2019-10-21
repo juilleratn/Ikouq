@@ -1,23 +1,37 @@
 .container{
     display: flex;
 }
+
+.info{
+
+    margin-right: 5%;
+    width: 30%;
+}
 .photo{
+    width: 70%;
 }
 .info{
-    text-align: center;
+
 }
+.photo img{
+    border-radius: 15px;
+    background: rgba(255, 250, 255, 0.2);
+    box-shadow: 0 0 20px 0 rgba(159, 86, 2, 0.66), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    margin: 5%;
+}
+
 .topbar{
     height: 20px;
 }
+
 .platRegime{
     display: flex;
 }
+
 li{
     list-style: none;
 }
-.part{}
-.hero{
-    display: flex;
+.instruction{
+    padding: 2%;
 }
-.instruction{}
-.colonne_droite{}
+

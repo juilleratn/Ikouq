@@ -3,14 +3,18 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}{% endblock %}</title>
-        {% block stylesheets %}
+
+        {% block stylesheets  %}
             <link href="{{ asset('/css/base.css') }}" rel="stylesheet"/>
             <link href="{{ asset('/css/recipe.css') }}" rel="stylesheet"/>
             <link href="{{ asset('/css/onglet.css') }}" rel="stylesheet"/>
         {% endblock %}
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
     </head>
     <body>
+    
     <header>
         <div class="ikouq">
             <div class="logo"></div>
@@ -20,9 +24,11 @@
         </div>
     </header>
     <style>
-        body{background-image:url("{{ asset('/image/bg.jpg') }}");cursor: url("{{ asset('cursor.cur') }}"), pointer;}
+        body{cursor: url("{{ asset('/fonts/cursor.cur') }}"), pointer;background-image:url("{{ asset('/image/bg.jpg') }}");background-repeat: no-repeat;background-size: cover}
         .logo{background-image:url("{{ asset('/image/IKouq_logo.png') }}");background-size: contain;background-repeat: no-repeat}
-        a{cursor: url("{{ asset('fourchette.cur') }}"), pointer;}
+        a{cursor: url("{{ asset('/fonts/fourchette.cur') }}"), pointer}
+        header{background-image:url("{{ asset('/image/bg.jpg') }}");}
+
          </style>
     {% block javascripts %}
         <script
@@ -30,6 +36,7 @@
                 integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
                 crossorigin="anonymous">
         </script>
+
 
     {% endblock %}
         {% block body %}{% endblock %}

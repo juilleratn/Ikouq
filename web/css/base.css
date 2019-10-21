@@ -1,29 +1,37 @@
-
+@font-face {
+    font-family: "androgyne";
+    src: url("/fonts/Androgyne_TB.ttf");
+}
 html{
     background-color: #201413;
-    height: 100%;
+
 }
+
 body{
-    background-image: url("/web/image/bg.jpg") ;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-color: #191919;
+    font-family: androgyne;
+    background-color: #5e4038;
     font-size: 16px;
-    width: 70%;
-    height: 100%;
-    margin-left: 15%;
-
-
-
+    text-align: center;
 }
+
 header{
     background-image:url("/web/image/IKouq_logo.png");
     background-size: cover;
-
 }
+
+.hero,.container, .titre{
+   border: 2px solid red;
+    width: 50%;
+    margin-left: 25%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero{
+    height: 50%;
+}
+
 .ikouq{
-    border: 2px solid #ff9802;
+    border: 1px solid #ff9802;
     width: 35%;
     max-width: 230px;
     max-height: 130px;
@@ -31,42 +39,40 @@ header{
     border-radius: 15px;
     display: flex;
     margin-left: 2%;
-
 }
+
 .logo{
     width: 150px;height: 100px;
 }
+
 .marque p {
     font-size: 2.25em;
-
     max-font-size: 36px;
     padding-right: 5px;
 }
+
 h1{
     text-align: center;
+    width: 50%;
+    margin-left: 25%;
 }
-form,  h1, .part, .instruction, .colonne_droite, .topbar {
 
-    padding: 30px;
-    border: 2px solid #ff9802;
+h1, .part, .colonne_droite, .instruction,  .topbar {
     border-radius: 15px;
-    background: rgba(255, 250, 255, 0.6);
+    background: rgba(255, 250, 255, 0.2);
     box-shadow: 0 0 20px 0 rgba(159, 86, 2, 0.66), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    margin: 5%;
 }
+
 .container h1{
     width: 38%;
     margin: 0 auto;
     padding-bottom: 10px;
 }
 tr{
-
-
-    border: 2px solid #ff9802;
+    border-bottom: 1px solid #ff9802;
     border-radius: 15px;
     box-shadow: 0 0 20px 0 rgba(159, 86, 2, 0.66), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     text-align: center;
-
 }
 /* Full-width inputs */
 input[type=text], input[type=password] {
@@ -76,7 +82,7 @@ input[type=text], input[type=password] {
     border: 2px solid #ccc;
     box-sizing: border-box;
 }
-/* Set a style for all buttons */
+
 input[type=submit] {
     background-color: #FF9802;
     color: #191919;
@@ -86,6 +92,7 @@ input[type=submit] {
     cursor: pointer;
     width: 100%;
 }
+
 input[type=submit]:hover {
     background-color: rgba(255, 152, 2, 0.62);
     color: #191919;
@@ -95,4 +102,7 @@ a{
     box-shadow: 0 0 20px 0 rgba(159, 86, 2, 0.66), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     text-decoration: none;
     color: #191919;
+}
+.adminRecette a{
+    color: white;
 }
