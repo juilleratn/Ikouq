@@ -10,7 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use Dompdf\Dompdf;
+use Dompdf\Options;
 /**
  * Recette controller.
  *
@@ -33,6 +34,8 @@ class RecetteController extends Controller
         return $this->render('recette/index.html.twig', array(
             'recettes' => $recettes,
         ));
+
+
     }
 
     /**
@@ -166,7 +169,42 @@ class RecetteController extends Controller
         ]);
     }
 
+    /**
+     * Imprimer un pdf de la liste d'ingrédient
+     *
+     * @Route("/recette/{id}", name="liste_course")
+     * @return Response
+     */
+    public function index()
+    {
+        // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+
+        // Retrieve the HTML generated in our twig file
+        $html = $this->renderView('recette/pdf_course.html.twig', [
+            'title' => "Welcome to our PDF Test"
+        ]);
+
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser (force download)
+        $dompdf->stream("course.pdf", [
+            "Attachment" => false
+        ]);
+    }
 
 
 
-}
+
+    }

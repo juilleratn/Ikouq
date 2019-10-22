@@ -68,15 +68,15 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
 
-# Assetic Configuration
-assetic:
-    debug:          '%kernel.debug%'
-    use_controller: '%kernel.debug%'
-    filters:
-        cssrewrite: ~
 
-##Knp_snappy Configuration
+
 #    knp_snappy:
 #        pdf:
 #            enabled:    true
-#            binary:     %kernel.root_dir%/../vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64
+#            binary:     /usr/local/bin/wkhtmltopdf
+#            options:
+#                no-outline: true
+#                            page-size: LETTER
+#                            # Recommended to set UTF-8 as default encoding :)
+#                            encoding: UTF-8
+#
