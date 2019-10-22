@@ -6,18 +6,36 @@
         <h1>Les recettes</h1>
     </div>
     <div class="container">
-        <img style="width: 100%;height: 70%; " src="{{ asset("/images/homebg.jpg") }}">
+
+
+            <ul id="ongletsRegime">
+                <li class="actifR">Vegan</li>
+                <li>normal</li>
+                <li>Vegetarien</li>
+            </ul>
+            <div id="contenuR">
+                <div class="itemR">
+                    <img style="width: 100%;height: 70%; " src="{{ asset("/images/homebg.jpg") }}">
+
+                </div>
+            </div>
+    </div>
+
+
+
+
+
     </div>
     <div class="hero">
         <ul id="ongletsPlat">
-            <li class="actif">Entrée</li>
+            <li class="actif">Entrée/Salade</li>
             <li>Plat principal</li>
             <li>Dessert</li>
+            <li>Boisson</li>
         </ul>
         <div id="contenu">
             <div class="item">
                 <table>
-
                     {% for recette in recettes | sort %}
                         {% if (recette.plat =='Entrée') %}
                             <tr>
@@ -26,7 +44,7 @@
                                 <td>Pour {{ recette.part }} personnes,</td>
                                 <td>il vous faudra {{ recette.duree }} minutes.</td>
                                 {#_______________visible par l'admin________________#}
-                                <td>
+                                <td class="adminRecette">
                                     <ul>
                                         <li>
                                             <a href='{{ path('recette_show', { 'id': recette.id }) }}'>show</a>
@@ -52,7 +70,7 @@
                                 <td>Pour {{ recette.part }} personnes,</td>
                                 <td>il vous faudra {{ recette.duree }} minutes.</td>
                                 {#_______________visible par l'admin________________#}
-                                <td>
+                                <td class="adminRecette">
                                     <ul>
                                         <li>
                                             <a href='{{ path('recette_show', { 'id': recette.id }) }}'>show</a>
@@ -78,7 +96,33 @@
                                 <td>Pour {{ recette.part }} personnes,</td>
                                 <td>il vous faudra {{ recette.duree }} minutes.</td>
                                 {#_______________visible par l'admin________________#}
-                                <td>
+                                <td class="adminRecette">
+                                    <ul>
+                                        <li>
+                                            <a href='{{ path('recette_show', { 'id': recette.id }) }}'>show</a>
+                                        </li>
+                                        <li>
+                                            <a href='{{ path('recette_edit', { 'id': recette.id }) }}'>edit</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                                {#___________________________________________________#}
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="item">
+                <table>
+                    {% for recette in recettes %}
+                        {% if (recette.plat =='Boisson') %}
+                            <tr>
+                                <td><a href='{{ path('recette_recipe', { 'nom': recette.nom }) }}'>{{ recette.nom }}</a></td>
+                                <td><img style='width:100px; height:100px;border-radius: 15px' src='/image/{{ recette.urlPhoto }}'></td>
+                                <td>Pour {{ recette.part }} personnes,</td>
+                                <td>il vous faudra {{ recette.duree }} minutes.</td>
+                                {#_______________visible par l'admin________________#}
+                                <td class="adminRecette">
                                     <ul>
                                         <li>
                                             <a href='{{ path('recette_show', { 'id': recette.id }) }}'>show</a>
@@ -100,6 +144,7 @@
             <a href="{{ path('recette_new') }}">Create a new recette</a>
         </div>
     </div>
+
 
 
 
@@ -127,4 +172,6 @@
         setDisplay();
     });
 </script>
+
 {% endblock %}
+

@@ -19,10 +19,10 @@ header{
     background-size: cover;
 }
 
-.hero,.container, .titre{
+.hero,.container, .titre, footer{
    border: 2px solid red;
-    width: 50%;
-    margin-left: 25%;
+    width: 60%;
+    margin-left: 20%;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -103,6 +103,6 @@ a{
     text-decoration: none;
     color: #191919;
 }
-.adminRecette a{
+.adminRecette,.adminRecette a{
     color: white;
 }

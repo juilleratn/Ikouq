@@ -35,105 +35,115 @@
 
     <div class="hero">
         <ul id="ongletsPlat">
-            <li class="actif">Instructions</li>
-            <li>Ingrédients</li>
+            <li >Instructions</li>
+            <li class="actif">Ingrédients</li>
         </ul>
-
         <div id="contenu">
             <div class="item">
-        <div class="instruction">{{ recette.instruction |raw }}</div>
+                <div class="instruction">{{ recette.instruction |raw }}</div>
             </div>
             <div class="item">
-        <div class="colonne_droite">
-            <ul>
-                <table>
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th>Allergènes</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for nom, value in quantitesIngredients %}
-                        <tr>
-                            <td><img style="width:75px; height:75px;border-radius: 15px" src="/image/{{ value.objet.urlPhoto }}"></td>
-                            <td class="quantite" id="quant{{ loop.index - 1 }}" >{{ value.quantite }} {{ value.objet.mesure }} de {{ nom }} </td>
-                            <td>{% if (value.objet.nutriScore == '1') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('image/NS_a.png') }}">{% endif %}
-                                {% if (value.objet.nutriScore == '2') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('/image/NS_b.png') }}">{% endif %}
-                                {% if (value.objet.nutriScore == '3') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('/image/NS_c.png') }}">{% endif %}
-                                {% if (value.objet.nutriScore == '4') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('/image/NS_d.png') }}">{% endif %}
-                                {% if (value.objet.nutriScore == '5') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('/image/NS_e.png') }}">{% endif %}
-                            </td>
-                            <td>{% if (value.objet.allergene  == 'none') == false %}
-                                {{ value.objet.allergene }}
-                                {% endif %}</td>
-
-                        </tr>
-
-
-
-                    </tbody>
-
-                    {% endfor %}
-                </table>
-            </ul>
-        </div>
+                <div class="colonne_droite">
+                    <ul>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th>Allergènes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for nom, value in quantitesIngredients %}
+                                <tr>
+                                    <td><img style="width:75px; height:75px;border-radius: 15px" src="/image/{{ value.objet.urlPhoto }}"></td>
+                                    <td class="quantite" id="quant{{ loop.index0 }}" >{{ value.quantite }}</td>
+                                    <td>{{ value.objet.mesure }} de {{ nom }}</td>
+                                    <td>{% if (value.objet.nutriScore == '1') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('image/NS_a.png') }}">{% endif %}
+                                        {% if (value.objet.nutriScore == '2') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('/image/NS_b.png') }}">{% endif %}
+                                        {% if (value.objet.nutriScore == '3') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('/image/NS_c.png') }}">{% endif %}
+                                        {% if (value.objet.nutriScore == '4') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('/image/NS_d.png') }}">{% endif %}
+                                        {% if (value.objet.nutriScore == '5') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('/image/NS_e.png') }}">{% endif %}
+                                    </td>
+                                    <td>{% if (value.objet.allergene  == 'none') == false %}
+                                        {{ value.objet.allergene }}
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            </tbody>
+                                {% endfor %}
+                        </table>
+                    </ul>
+                </div>
             </div>
+        </div>
     </div>
     <div class="retour">
         <button type="button"><a href="javascript:history.go(-1)">Retour</a></button>
     </div>
+
+
 <script type="text/javascript">
     $nombrePart = {{ recette.part }};  // le nombre de part voulu au final
     $quantiteIngredient= $('.quantite');
     $recettePart = {{ recette.part }}; //le nombre de part à la base de la recette
     $resultatIngredient = [];
+    $totalIng = [];
     i=0;
     j=0;
+    calculIngredient();
 
     function calculIngredient()  //  calcule de la quantite/part
     {
         $.each($quantiteIngredient, function(index)
         {
-            $resultatIngredient [i]= [($quantiteIngredient[index].firstChild.data / $recettePart ) *$nombrePart];
+            $resultatIngredient [i]= [($quantiteIngredient[index].firstChild.data / $recettePart ) ];
             i++;
-            console.log ('resulat', $resultatIngredient);
         });
     }
-    function fixeIngredient()  // inscris pour  la quantité de l'ingrédinet
-    {
-        for(j=0;j<$resultatIngredient.length;j++){
-            $('#quant'+j).html($resultatIngredient[j]);
-        }
-    }
 
-    function ajouter()  // ajoute une part
+    function fixeIngredient()  // inscris pour  la quantité de l'ingrédinet
+     {
+         for(j=0;j<$resultatIngredient.length;j++){
+             $totalIng[j] = Math.round($resultatIngredient[i] * $nombrePart) ;
+             i++;
+             $('#quant'+j).html($totalIng[j]);
+         }console.log ($resultatIngredient, $totalIng);
+     }
+
+    function add()  // ajoute une part
     {
         $nombrePart++;
         $("#nbPart").html($nombrePart);
         $value = $("#nbPart").value;
-        calculIngredient();
         fixeIngredient();
         i=0;
     }
 
-    function soustraire() // enlève une part
+    function subtract() // enlève une part
     {
         if ($nombrePart <= 1) {
             $nombrePart = 1;
         }else{
             $nombrePart--;
             $("#nbPart").html($nombrePart);
-            calculIngredient();
-            fixeIngredient();
-            i=0;
-        }
+        }i=0;
+    }
+//-----------ces deux fonctions permettent de temporisé les évènements dans l'affichage----
+    function ajouter() {
+        add();
+        fixeIngredient();
     }
 
+    function soustraire() {
+        subtract();
+        fixeIngredient()
+    }
 </script>
 <script>
+    //-------------------système d'onglets------------------------
     $(function() {
         $('#ongletsPlat').css('display', 'block');
         $('#ongletsPlat').click(function(event)
@@ -155,7 +165,5 @@
         }
         setDisplay();
     });
-
-
 </script>
 {% endblock %}
