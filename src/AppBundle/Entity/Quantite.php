@@ -88,7 +88,7 @@ class Quantite
     /**
      * @param mixed $fk_ingredient
      */
-    public function setFkIngredient($fk_ingredient): void
+    public function setFkIngredient($fk_ingredient)
     {
         $this->fk_ingredient = $fk_ingredient;
     }
@@ -96,7 +96,7 @@ class Quantite
     /**
      * @param mixed $fk_recette
      */
-    public function setFkRecette($fk_recette): void
+    public function setFkRecette($fk_recette)
     {
         $this->fk_recette = $fk_recette;
     }
@@ -115,4 +115,3 @@ class Quantite
         return sprintf($format, $this->fk_recette, $this->fk_ingredient, $this->quantite);
     }
 }
-
