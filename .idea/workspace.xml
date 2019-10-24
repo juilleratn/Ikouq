@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8220f98a-29c9-4c94-b3c7-3465168e1d32" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/recette/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/recette/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/recette/pdf_course.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/recette/pdf_course.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/recette/recipe.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/recette/recipe.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/RecetteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/RecetteController.php" afterDir="false" />
     </list>
@@ -36,20 +34,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="600">
-              <caret line="40" column="15" selection-start-line="40" selection-start-column="15" selection-end-line="40" selection-end-column="15" />
+              <caret line="40" column="82" selection-start-line="40" selection-start-column="82" selection-end-line="40" selection-end-column="82" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/RecetteController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="174" column="42" selection-start-line="174" selection-start-column="42" selection-end-line="174" selection-end-column="42" />
+            <state relative-caret-position="270">
+              <caret line="174" column="50" selection-start-line="174" selection-start-column="50" selection-end-line="174" selection-end-column="50" />
               <folding>
                 <element signature="e#40#70#0#PHP" expanded="true" />
               </folding>
@@ -60,8 +58,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/recette/recipe.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="33" column="70" selection-start-line="33" selection-start-column="70" selection-end-line="33" selection-end-column="70" />
+            <state relative-caret-position="570">
+              <caret line="169" selection-start-line="169" selection-end-line="169" />
             </state>
           </provider>
         </entry>
@@ -125,10 +123,10 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/recette/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/RecetteController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/recette/pdf_course.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/recette/recipe.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/recette/recipe.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/RecetteController.php" />
       </list>
     </option>
   </component>
@@ -194,7 +192,7 @@
   <component name="ProjectFrameBounds" extendedState="4">
     <option name="x" value="67" />
     <option name="y" value="25" />
-    <option name="width" value="812" />
+    <option name="width" value="800" />
     <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -318,15 +316,15 @@
       <workItem from="1571641110948" duration="18975000" />
       <workItem from="1571729313294" duration="18020000" />
       <workItem from="1571752435833" duration="2254000" />
-      <workItem from="1571900720659" duration="19657000" />
+      <workItem from="1571900720659" duration="20532000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="231755000" />
+    <option name="totallyTimeSpent" value="232630000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="808" height="1055" extended-state="4" />
+    <frame x="67" y="25" width="800" height="1055" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49784017" weight="0.335958" />
@@ -653,23 +651,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/RecetteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="174" column="42" selection-start-line="174" selection-start-column="42" selection-end-line="174" selection-end-column="42" />
-          <folding>
-            <element signature="e#40#70#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/recette/recipe.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="33" column="70" selection-start-line="33" selection-start-column="70" selection-end-line="33" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/recette/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -687,7 +668,24 @@
     <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
-          <caret line="40" column="15" selection-start-line="40" selection-start-column="15" selection-end-line="40" selection-end-column="15" />
+          <caret line="40" column="82" selection-start-line="40" selection-start-column="82" selection-end-line="40" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/recette/recipe.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="169" selection-start-line="169" selection-end-line="169" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/RecetteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="174" column="50" selection-start-line="174" selection-start-column="50" selection-end-line="174" selection-end-column="50" />
+          <folding>
+            <element signature="e#40#70#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

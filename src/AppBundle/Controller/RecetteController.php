@@ -8,7 +8,8 @@ use AppBundle\Entity\Ingredient;
 use AppBundle\Repository\QuantiteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -167,6 +168,11 @@ class RecetteController extends Controller
             'recette' => $recette,
             'quantitesIngredients' => $tabQuantitesIngredients
         ]);
+    }
+
+    public function ajaxAction(Request $request)
+    {
+        $listeCourse = $request->request->get('liste');
     }
 
     /**

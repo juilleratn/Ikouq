@@ -153,18 +153,20 @@
 
 //---------------------------requete ajax---------------------
     $liste_course = [];
-    $("#course").on('click', function(e){
+    $("#course").on('click', function(e) {
         e.preventDefault();
-         $liste_course = [$('.colonne_droite + td')];
+        $liste_course = [$('.colonne_droite + td')];
         $.ajax({
-            url:'/ajax_request',
-            data: $liste_course,
+            url: '/recette',
+            data: {"liste" : $liste_course},
             dataType: 'json',
             async: true,
+            success: function () {
+                console.log("ok");
 
-        });
+            }
+        })
     });
-
 
 </script>
 <script>
