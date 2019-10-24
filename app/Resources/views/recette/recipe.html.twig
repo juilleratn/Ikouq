@@ -23,12 +23,18 @@
                         Pour
                         <input type="button" id="moins" value="-" onclick="soustraire()"/>
                     </div>
-                    <div id="nbPart">{{ recette.part }}</div>
+                    <div id="nbPart">{{ recette.part }}  <i class="fas fa-user"></i> </div>
                 </div>
                 <div class="plus">
-                    <input type="button" id="plus" value="+" onclick="ajouter()"/> <i class="fas fa-user"></i>
+                    <input type="button" id="plus" value="+" onclick="ajouter()"/>
                 </div>
-                <div>{{ recette.duree }} min <i class="far fa-clock"></i></div>
+                <br>
+                <div><i class="far fa-clock"></i> {{ recette.duree }} min </div>
+                <div class="export">
+                    <button id="course" type="button" >liste de course</button>{# <a href='{{ path('liste_course',{'id': recette.id}) }}' style="color: #66dd66">Liste de course</a>#}</button>
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -48,7 +54,7 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th><a href='{{ path('liste_course',{'id': recette.id}) }}'>Liste de course</a></th>
+                                    <th></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
@@ -58,16 +64,16 @@
                             <tbody>
                                 {% for nom, value in quantitesIngredients %}
                                 <tr>
-                                    <td><img style="width:75px; height:75px;border-radius: 15px" src="/image/{{ value.objet.urlPhoto }}"></td>
+                                    <td class="photoIng"><img style="width:75px; height:75px;border-radius: 15px" src="/image/{{ value.objet.urlPhoto }}"></td>
                                     <td class="quantite" id="quant{{ loop.index0 }}" >{{ value.quantite }}</td>
-                                    <td>{{ value.objet.mesure }} de {{ nom }}</td>
-                                    <td>{% if (value.objet.nutriScore == '1') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('image/NS_a.png') }}">{% endif %}
+                                    <td class="mesureIng">{{ value.objet.mesure }} de {{ nom }}</td>
+                                    <td class="nutriIng">{% if (value.objet.nutriScore == '1') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('image/NS_a.png') }}">{% endif %}
                                         {% if (value.objet.nutriScore == '2') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('/image/NS_b.png') }}">{% endif %}
                                         {% if (value.objet.nutriScore == '3') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('/image/NS_c.png') }}">{% endif %}
                                         {% if (value.objet.nutriScore == '4') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('/image/NS_d.png') }}">{% endif %}
                                         {% if (value.objet.nutriScore == '5') %}<img style="width:75px; height:42px;border-radius: 15px" src="{{ asset('/image/NS_e.png') }}">{% endif %}
                                     </td>
-                                    <td>{% if (value.objet.allergene  == 'none') == false %}
+                                    <td class="allergeneIng">{% if (value.objet.allergene  == 'none') == false %}
                                         {{ value.objet.allergene }}
                                         {% endif %}
                                     </td>
@@ -110,7 +116,8 @@
              $totalIng[j] = Math.round($resultatIngredient[i] * $nombrePart) ;
              i++;
              $('#quant'+j).html($totalIng[j]);
-         }console.log ($resultatIngredient, $totalIng);
+
+         }
      }
 
     function add()  // ajoute une part
@@ -119,6 +126,8 @@
         $("#nbPart").html($nombrePart);
         $value = $("#nbPart").value;
         fixeIngredient();
+        listeCourse();
+        console.log($totalIng);
         i=0;
     }
 
@@ -141,12 +150,28 @@
         subtract();
         fixeIngredient()
     }
+
+//---------------------------requete ajax---------------------
+    $liste_course = [];
+    $("#course").on('click', function(e){
+        e.preventDefault();
+         $liste_course = [$('.colonne_droite + td')];
+        $.ajax({
+            url:'/ajax_request',
+            data: $liste_course,
+            dataType: 'json',
+            async: true,
+
+        });
+    });
+
+
 </script>
 <script>
     //-------------------système d'onglets------------------------
     $(function() {
         $('#ongletsPlat').css('display', 'block');
-        $('#ongletsPlat').click(function(event)
+        $('#ongletsPlat').on('click', function(event)
         {
             var actuel = event.target;
             if (!/li/i.test(actuel.nodeName) || actuel.className.indexOf('actif') > -1) {
@@ -165,5 +190,11 @@
         }
         setDisplay();
     });
+
+    function listeCourse()
+    {
+        sessionStorage.setItem("nb", $nombrePart);
+        sessionStorage.setItem("totalIng", $totalIng);
+    }
 </script>
 {% endblock %}

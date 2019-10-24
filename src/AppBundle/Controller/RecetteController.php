@@ -147,47 +147,50 @@ class RecetteController extends Controller
      *
      * @return Response
      */
-    public function showRecipe(Recette $recette){
+    public function showRecipe(Recette $recette)
+    {
 
         $em = $this->getDoctrine()->getManager();
         $results = $em->getRepository('AppBundle:Quantite')->getQuantitéByIngredients($recette);
 
         $tabQuantitesIngredients = [];
         $ingredients = [];
-                //Pour la recette choisi, on lui associe dans un tableau associatif les quantités et les ingredients(nom, mesure, etc)
+        //Pour la recette choisi, on lui associe dans un tableau associatif les quantités et les ingredients(nom, mesure, etc)
         foreach ($results as $result) {
             $ingredients[] = $result->getFkIngredient();
             $tabQuantitesIngredients[($result->getFkIngredient()->getNom())] =
-                [ "quantite" => $result->getQuantite(),
-                  "objet" => $result->getFkIngredient()]
-            ;
+                ["quantite" => $result->getQuantite(),
+                    "objet" => $result->getFkIngredient()];
         }
 
         return $this->render('recette/recipe.html.twig', [
             'recette' => $recette,
-            'quantitesIngredients'=> $tabQuantitesIngredients
+            'quantitesIngredients' => $tabQuantitesIngredients
         ]);
     }
 
     /**
-     * Imprimer un pdf de la liste d'ingrédient
+     * Imprimer un pdf de la liste d'ingrédient(user)
      *
-     * @Route("/recette/{id}", name="liste_course")
+     * @Route("{id}", name="liste_course")
      * @return Response
      */
-    public function index()
+    public function index(Recette $recette)
     {
         // Configure Dompdf according to your needs
         $pdfOptions = new Options();
         $pdfOptions->set('defaultFont', 'Arial');
+        $pdfOptions->set('isJavascriptEnabled', TRUE);
 
         // Instantiate Dompdf with our options
         $dompdf = new Dompdf($pdfOptions);
 
+
         // Retrieve the HTML generated in our twig file
         $html = $this->renderView('recette/pdf_course.html.twig', [
-            'title' => "Welcome to our PDF Test"
-        ]);
+            'recette'=> $recette
+        ])
+        ;
 
         // Load HTML to Dompdf
         $dompdf->loadHtml($html);
@@ -199,7 +202,7 @@ class RecetteController extends Controller
         $dompdf->render();
 
         // Output the generated PDF to Browser (force download)
-        $dompdf->stream("course.pdf", [
+        $dompdf->stream("mypdf.pdf", [
             "Attachment" => false
         ]);
     }

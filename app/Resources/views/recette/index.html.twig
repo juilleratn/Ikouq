@@ -39,7 +39,7 @@
                     {% for recette in recettes | sort %}
                         {% if (recette.plat =='Entrée') %}
                             <tr>
-                                <td><a href='{{ path('recette_recipe', { 'nom': recette.nom }) }}'>{{ recette.nom }}</a></td>
+                                <td><a href='{{ path('recette_recipe', { 'nom': recette.nom }) }}' >{{ recette.nom }}</a></td>
                                 <td><img style='width:100px; height:100px;border-radius: 15px' src='/image/{{ recette.urlPhoto }}'></td>
                                 <td>Pour {{ recette.part }} personnes,</td>
                                 <td>il vous faudra {{ recette.duree }} minutes.</td>
@@ -52,6 +52,7 @@
                                         <li>
                                             <a href='{{ path('recette_edit', { 'id': recette.id }) }}'>edit</a>
                                         </li>
+
                                     </ul>
                                 </td>
                                 {#___________________________________________________#}
